@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>UK Real State</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+
+<div class="main1" >
+     <h1>Predict Property Age (Old or New) from UK Real State Data </h1>
+
+     <!-- Form to receive input to ML model
+          -->
+
+    <form action="/predictOutput" method="post">
+
+
+<!-- no values less than zero, any step to allow float/decimal values and required input to submit the form -->
+    	<input type="number" min="0" name="Price" placeholder="Enter Price of Property" required  />
+        <select id="property_type" name="property_type" required>
+<!-- empty string for "choose ML model option to "required" parameter to take action -->
+            <option value="">Choose Property Type</option>
+  <option value="D">1. Detached</option>
+  <option value="S">2. Semi-Detached</option>
+            <option value="T">3. Terrace</option>
+            <option value="F">4. Flats/Maisonettes</option>
+            <option value="O">5. Other</option>
+
+</select>
+        <select id="duration" name="duration" required>
+		<!-- empty string for "choose ML model option to "required" parameter to take action -->
+            <option value="">Choose Duration/Tenure</option>
+  <option value="F">1. Freehold</option>
+  <option value="L">2. Leasehold</option>
+
+
+</select>
+        <select id="ppd" name="ppd" required>
+		<!-- empty string for "choose ML model option to "required" parameter to take action -->
+            <option value="">Choose PPDCategory Type</option>
+  <option value="A">1. Standard Price Entry</option>
+  <option value="B">2. Additional Price Entry</option>
+        </select>
+
+<button class="button" type = submit>Predict Property Age</button>
+
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
